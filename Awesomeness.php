@@ -14,7 +14,7 @@
  * @defgroup Awesomeness Awesomeness
  */
 
-define( 'Awesomeness_VERSION', 'of awesomeness' );
+define( 'Awesomeness_VERSION', 'with even moar awesomeness' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -32,10 +32,13 @@ $wgHooks['ArticleSave'][] = 'efAwesomenessInsertion';
 function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags ) {
 	$awesomeness = array( 'awesomeness', 'awesome' );
 
-	foreach( $awesomeness as $awesome ) {
+	foreach( $awesomeness as &$awesome ) {
 		$awesome = wfMsg( $awesome );
-		$text = preg_replace( "/(^|\s|-)({$awesome}[\?!\.\,]?)(\s|$)/i", " '''$2''' ", $text );
 	}
+	
+	$words = implode( '|', $awesomeness );
+	
+	$text = preg_replace( "/(^|\s|-)((?:{$words})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", $text );	
 
 	return true;
 }
