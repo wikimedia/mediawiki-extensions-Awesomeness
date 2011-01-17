@@ -47,8 +47,6 @@ function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $
  * Based on Svips patch at http://bug-attachment.wikimedia.org/attachment.cgi?id=7351
  */
 if ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
-	header( 'Content-Type: text/plain' );
-	
 	$O_o = false;
 	
 	if ( strtolower( $_SERVER['QUERY_STRING'] ) == 'isthiswikiawesome' ) {
@@ -57,5 +55,8 @@ if ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
 		$O_o = strrev( $_SERVER['QUERY_STRING'] );
 	}
 	
-	if ( $O_o ) die( $O_o );
+	if ( $O_o ) {
+		header( 'Content-Type: text/plain' );
+		die( $O_o );
+	}
 }
