@@ -1,11 +1,18 @@
 <?php
+
 /**
  * Initialization file for the Awesomeness extension.
+ * 
+ * Documentation:	 		http://www.mediawiki.org/wiki/Extension:Awesomeness
+ * Support					http://www.mediawiki.org/wiki/Extension_talk:Awesomeness
+ * Source code:             http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Awesomeness
  *
  * @file Awesomeness.php
  * @ingroup Awesomeness
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ *
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 /**
