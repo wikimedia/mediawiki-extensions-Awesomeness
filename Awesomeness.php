@@ -38,15 +38,9 @@ $wgHooks['ArticleSave'][] = 'efAwesomenessInsertion';
 
 function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags ) {
 	$awesomeness = array( 'awesomeness', 'awesome' );
-
-	foreach( $awesomeness as &$awesome ) {
-		$awesome = wfMsg( $awesome );
-	}
-	
-	$words = implode( '|', $awesomeness );
-	
-	$text = preg_replace( "/(^|\s|-)((?:{$words})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", $text );	
-
+	$awesomeness = array_map("wfMsg", $awesomeness);
+	$awesomeness = implode("|", array_map("preg_quote", $awesomeness, array_fill(0, count($awesomeness), "/")))
+	$text = preg_replace( "/(^|\s|-)((?:{$awesomeness})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", $text );
 	return true;
 }
 
