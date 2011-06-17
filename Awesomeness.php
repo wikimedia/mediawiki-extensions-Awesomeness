@@ -2,7 +2,7 @@
 
 /**
  * Initialization file for the Awesomeness extension.
- * 
+ *
  * Documentation:	 		http://www.mediawiki.org/wiki/Extension:Awesomeness
  * Support					http://www.mediawiki.org/wiki/Extension_talk:Awesomeness
  * Source code:             http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Awesomeness
@@ -49,13 +49,13 @@ function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $
  */
 if ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
 	$O_o = false;
-	
+
 	if ( strtolower( $_SERVER['QUERY_STRING'] ) == 'isthiswikiawesome' ) {
 		$O_o = 'Hell yeah!';
-	} else if ( preg_match( '/^[0o°xt][-_\.][0o°xt]$/i', $_SERVER['QUERY_STRING'] ) ) {
+	} elseif ( preg_match( '/^[0o°xt][-_\.][0o°xt]$/i', $_SERVER['QUERY_STRING'] ) ) {
 		$O_o = strrev( $_SERVER['QUERY_STRING'] );
 	}
-	
+
 	if ( $O_o ) {
 		header( 'Content-Type: text/plain' );
 		die( $O_o );
