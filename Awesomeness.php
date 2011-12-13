@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Awesomeness',
 	'version' => Awesomeness_VERSION,
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Awesomeness',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Awesomeness',
 	'descriptionmsg' => 'awesomeness-desc',
 );
 
