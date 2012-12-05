@@ -1,7 +1,7 @@
 These is the install file for the Awesomeness extension.
 	
-Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Awesomeness
-Latest version of the install file: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Awesomeness/INSTALL?view=co
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Awesomeness
+Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Awesomeness.git;a=blob;f=INSTALL
 
 
 == Installation ==
@@ -11,3 +11,6 @@ Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php
 
 # Awesomeness
 require_once( "$IP/extensions/Awesomeness/Awesomeness.php" );
+
+Note that awesomeness now requires you to have PHP 5.3 or later and MediaWiki 1.17 or later.
+If you're wiki is not awesome enough, you'll have to get an older, less awesome version, of awesomeness.

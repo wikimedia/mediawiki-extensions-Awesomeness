@@ -10,18 +10,18 @@
  * @file Awesomeness.php
  * @ingroup Awesomeness
  *
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  *
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 /**
- * This documenation group collects source code files belonging to Awesomeness.
+ * This documentation group collects source code files belonging to Awesomeness.
  *
  * @defgroup Awesomeness Awesomeness
  */
 
-define( 'Awesomeness_VERSION', 'with even moar awesomeness' );
+define( 'Awesomeness_VERSION', 'awesomeness = infinity+1' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -34,15 +34,21 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionMessagesFiles['Awesomeness'] = dirname( __FILE__ ) . '/Awesomeness.i18n.php';
 
-$wgHooks['ArticleSave'][] = 'efAwesomenessInsertion';
-
-function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags ) {
+$wgHooks['ArticleSave'][] = function ( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags ) {
 	$awesomeness = array( 'awesomeness', 'awesome' );
-	$awesomeness = array_map("wfMsg", $awesomeness);
-	$awesomeness = implode("|", array_map("preg_quote", $awesomeness, array_fill(0, count($awesomeness), "/")));
+
+	$awesomeness = array_map(
+		function( $awesomeness ) {
+			return wfMessage( $awesomeness )->text();
+		},
+		$awesomeness
+	);
+
+	$awesomeness = implode( "|", array_map( "preg_quote", $awesomeness, array_fill( 0, count( $awesomeness ), "/" ) ) );
 	$text = preg_replace( "/(^|\s|-)((?:{$awesomeness})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", $text );
+
 	return true;
-}
+};
 
 /**
  * Based on Svips patch at http://bug-attachment.wikimedia.org/attachment.cgi?id=7351
