@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Initialization file for the Awesomeness extension.
  *
@@ -21,7 +20,7 @@
  * @defgroup Awesomeness Awesomeness
  */
 
-define( 'Awesomeness_VERSION', 'awesomeness = infinity+1' );
+define( 'Awesomeness_VERSION', 'awesomeness = infinity+2' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -32,6 +31,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'awesomeness-desc',
 );
 
+$wgMessagesDirs['Awesomeness'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['Awesomeness'] = dirname( __FILE__ ) . '/Awesomeness.i18n.php';
 
 $wgHooks['ArticleSave'][] = function ( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags ) {
