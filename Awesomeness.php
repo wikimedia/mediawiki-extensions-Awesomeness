@@ -34,7 +34,8 @@ $wgExtensionCredits['other'][] = array(
 $wgMessagesDirs['Awesomeness'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['Awesomeness'] = dirname( __FILE__ ) . '/Awesomeness.i18n.php';
 
-$wgHooks['ArticleSave'][] = function ( &$article, &$user, &$text, &$summary, $minor, $watch, $sectionanchor, &$flags ) {
+$wgHooks['PageContentSave'][] = function ( &$wikiPage, &$user, &$content, &$summary,
+	$isMinor, $isWatch, $section, &$flags, &$status ) {
 	$awesomeness = array( 'awesomeness', 'awesome' );
 
 	$awesomeness = array_map(
@@ -45,7 +46,8 @@ $wgHooks['ArticleSave'][] = function ( &$article, &$user, &$text, &$summary, $mi
 	);
 
 	$awesomeness = implode( "|", array_map( "preg_quote", $awesomeness, array_fill( 0, count( $awesomeness ), "/" ) ) );
-	$text = preg_replace( "/(^|\s|-)((?:{$awesomeness})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", $text );
+	$text = preg_replace( "/(^|\s|-)((?:{$awesomeness})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", ContentHandler::getContentText( $content ) );
+	$content = ContentHandler::makeContent( $text, $wikiPage->getTitle() );
 
 	return true;
 };
