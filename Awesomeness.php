@@ -2,14 +2,15 @@
 /**
  * Initialization file for the Awesomeness extension.
  *
- * Documentation:	 		http://www.mediawiki.org/wiki/Extension:Awesomeness
- * Support					http://www.mediawiki.org/wiki/Extension_talk:Awesomeness
- * Source code:             http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Awesomeness
+ * Documentation: https://www.mediawiki.org/wiki/Extension:Awesomeness
+ * Support https://www.mediawiki.org/wiki/Extension_talk:Awesomeness
+ * Source code: https://phabricator.wikimedia.org/diffusion/EAWE/
  *
  * @file Awesomeness.php
  * @ingroup Awesomeness
+ * @package MediaWiki
  *
- * @licence GNU GPL v2+
+ * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License 2.0 or later
  *
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -20,20 +21,32 @@
  * @defgroup Awesomeness Awesomeness
  */
 
-define( 'Awesomeness_VERSION', 'awesomeness = infinity+2' );
+// Ensure that the script cannot be executed outside of MediaWiki.
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'This is an extension to MediaWiki and cannot be run standalone.' );
+}
 
+// Define extension's version.
+define( 'Awesomeness_VERSION', 'awesomeness = infinity+3' );
+
+// Display extension properties on MediaWiki.
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Awesomeness',
 	'version' => Awesomeness_VERSION,
-	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
+	'author' => array(
+		'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
+		'...'
+	),
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Awesomeness',
 	'descriptionmsg' => 'awesomeness-desc',
+	'license-label' => 'GPL-2.0+'
 );
 
+// Register extension messages and other localisation.
 $wgMessagesDirs['Awesomeness'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['Awesomeness'] = dirname( __FILE__ ) . '/Awesomeness.i18n.php';
 
+// And action.
 $wgHooks['PageContentSave'][] = function ( &$wikiPage, &$user, &$content, &$summary,
 	$isMinor, $isWatch, $section, &$flags, &$status ) {
 	$awesomeness = array( 'awesomeness', 'awesome' );
