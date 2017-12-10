@@ -47,7 +47,7 @@ $wgExtensionCredits['other'][] = array(
 $wgMessagesDirs['Awesomeness'] = __DIR__ . '/i18n';
 
 // And action.
-$wgHooks['PageContentSave'][] = function ( &$wikiPage, &$user, &$content, &$summary,
+$wgHooks['PageContentSave'][] = function ( WikiPage &$wikiPage, &$user, &$content, &$summary,
 	$isMinor, $isWatch, $section, &$flags, &$status ) {
 	$awesomeness = array( 'awesomeness', 'awesome' );
 
