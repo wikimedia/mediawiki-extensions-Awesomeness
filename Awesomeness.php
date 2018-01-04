@@ -40,7 +40,7 @@ $wgExtensionCredits['other'][] = array(
 	),
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Awesomeness',
 	'descriptionmsg' => 'awesomeness-desc',
-	'license-label' => 'GPL-2.0+'
+	'license-label' => 'GPL-2.0-or-later'
 );
 
 // Register extension messages and other localisation.
