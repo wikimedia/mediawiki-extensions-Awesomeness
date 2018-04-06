@@ -30,18 +30,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 define( 'Awesomeness_VERSION', 'awesomeness = infinity+3' );
 
 // Display extension properties on MediaWiki.
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
 	'name' => 'Awesomeness',
 	'version' => Awesomeness_VERSION,
-	'author' => array(
+	'author' => [
 		'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 		'...'
-	),
+	],
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Awesomeness',
 	'descriptionmsg' => 'awesomeness-desc',
 	'license-label' => 'GPL-2.0-or-later'
-);
+];
 
 // Register extension messages and other localisation.
 $wgMessagesDirs['Awesomeness'] = __DIR__ . '/i18n';
@@ -49,10 +49,10 @@ $wgMessagesDirs['Awesomeness'] = __DIR__ . '/i18n';
 // And action.
 $wgHooks['PageContentSave'][] = function ( WikiPage &$wikiPage, &$user, &$content, &$summary,
 	$isMinor, $isWatch, $section, &$flags, &$status ) {
-	$awesomeness = array( 'awesomeness', 'awesome' );
+	$awesomeness = [ 'awesomeness', 'awesome' ];
 
 	$awesomeness = array_map(
-		function( $awesomeness ) {
+		function ( $awesomeness ) {
 			return wfMessage( $awesomeness )->text();
 		},
 		$awesomeness
