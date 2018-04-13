@@ -10,7 +10,7 @@
  * @ingroup Awesomeness
  * @package MediaWiki
  *
- * @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License 2.0 or later
+ * @license GPL-2.0-or-later
  *
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
