@@ -59,7 +59,7 @@ $wgHooks['PageContentSave'][] = static function ( WikiPage &$wikiPage, &$user, &
 	);
 
 	$awesomeness = implode( "|", array_map( "preg_quote", $awesomeness, array_fill( 0, count( $awesomeness ), "/" ) ) );
-	$text = preg_replace( "/(^|\s|-)((?:{$awesomeness})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", ContentHandler::getContentText( $content ) );
+	$text = preg_replace( "/(^|\s|-)((?:{$awesomeness})[\?!\.\,]?)(\s|$)/i", " '''$2''' ", $content instanceof TextContent ? $content->getText() : '' );
 	$content = ContentHandler::makeContent( $text, $wikiPage->getTitle() );
 
 	return true;
